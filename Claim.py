@@ -10,6 +10,12 @@ window.geometry("500x300")
 window.config(bg="grey")
 window.resizable(0, 0)
 
+
+def function():
+    window.destroy()
+    import Convert
+
+
 lbl_account_holder = tk.Label(window, text="ACCOUNT HOLDER NAME: ", fg="white", bg="grey")
 lbl_account_holder.grid(row=0, column=1, padx=20, pady=20)
 
@@ -30,10 +36,11 @@ bank_name_ent["values"] = "Select-- ABSA CAPITEC FNB STANDARD NEDBANK"
 bank_name_ent.current(0)
 bank_name_ent.grid(row=2, column=2)
 
-convert_btn = tk.Button(window, text="CONVERT", width=10,  relief="raised", borderwidth=4, height=1)
+convert_btn = tk.Button(window, text="CONVERT", width=10,  relief="raised", borderwidth=4, height=1, command=function)
 convert_btn.grid(row=3, column=1, padx=20, pady=20)
 
 submit_btn = tk.Button(window, text="SUBMIT", width=10,  relief="raised", borderwidth=4, height=1)
 submit_btn.grid(row=3, column=2, padx=20, pady=20)
 
 window.mainloop()
+
