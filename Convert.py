@@ -4,14 +4,14 @@ import tkinter as tk
 from tkinter import messagebox
 import requests
 
-# Creating the window , adding a title and sizing it
+# Creating the window , adding a title and sizing it and adding a color
 window = Tk()
 window.title("CURRENCY CONVERTER")
 window.geometry("600x300")
 window.config(bg="teal")
 window.resizable(0, 0)
 
-
+# A function which will convert the users winnings to any currency
 def convert():
     try:
         url = "https://v6.exchangerate-api.com/v6/89dcd9e8cc7777ded2575ce1/latest/" + from_ent.get()
@@ -19,7 +19,7 @@ def convert():
         conversion = int(amount_ent.get()) * rates["conversion_rates"][to_ent.get()]
         currency_amount.config(text=conversion)
     except:
-        messagebox.showerror("Error", "No internet connection")
+        messagebox.showerror("Error", "No internet connection, please check internet connection")
 
 
 lbl_from = tk.Label(window, text="FROM: ", bg="teal")

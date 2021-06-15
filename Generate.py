@@ -2,6 +2,7 @@
 from tkinter import *
 import tkinter as tk
 import random
+from tkinter import messagebox
 
 # Creating the window , adding a title and sizing it
 window = Tk()
@@ -22,6 +23,11 @@ def ran_numbers():
     lotto_num.config(text=mylist)
 
 
+def claim():
+    window.destroy()
+    import Claim
+
+
 def reset():
     first_ent.delete(0, END)
     second_ent.delete(0, END)
@@ -33,13 +39,14 @@ def reset():
 
 
 def exit_program():
+    messagebox.showinfo("GoodBye", "Thank You For Playing")
     window.destroy()
 
 
 # A label telling the user to input 6 numbers
 
-lbl_numbers = tk.Label(window, text="PLEASE INSERT 6 NUMBERS : ", bg="yellow")
-lbl_numbers.place(x=250, y=50)
+lbl_numbers = tk.Label(window, text="PLEASE INSERT 6 NUMBERS AND THEN CLICK PLAY: ", bg="yellow")
+lbl_numbers.place(x=180, y=50)
 
 first_ent = tk.Entry(window, fg="white", bg="maroon", width=4)
 first_ent.place(x=50, y=120)
@@ -68,7 +75,7 @@ play_btn.place(x=200, y=320)
 reset_btn = tk.Button(window, text="RESET", fg="white", bg="maroon",  relief="raised", borderwidth=4, command=reset)
 reset_btn.place(x=50, y=320)
 
-claim_btn = tk.Button(window, text="CLAIM", fg="white", bg="maroon",  relief="raised", borderwidth=4)
+claim_btn = tk.Button(window, text="CLAIM", fg="white", bg="maroon",  relief="raised", borderwidth=4 , command=claim)
 claim_btn.place(x=350, y=320)
 
 exit_btn = tk.Button(window, text="EXIT", fg="white", bg="maroon",  relief="raised", borderwidth=4, command=exit_program)
