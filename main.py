@@ -19,6 +19,32 @@ window.resizable(0, 0)
 # Function to check users age
 
 
+def player_id():
+    name = name_ent.get()
+    email = email_ent.get()
+    id_num = id_ent.get()
+    address = address_ent.get()
+
+    print(name, email, id_num, address)
+
+    file = open("players.txt","w")
+
+    file.write("Name: " + name)
+
+    file.write("\n")
+
+    file.write("Email: " + email)
+
+    file.write("\n")
+
+    file.write("ID: " + str(id_num))
+
+    file.write("\n")
+
+    file.write("Address: " + address)
+
+
+
 def validation():
     try:
         my_id = rsaidnumber.parse(id_ent.get())
@@ -26,9 +52,9 @@ def validation():
         age = relativedelta(date.today(), dob.date())
         print(age.years)
         if age.years >= 18:
-            messagebox.showinfo("Congratulations!!", "You Qualify")
-            window.destroy()
             playsound("access.mp3")
+            player_id()
+            window.destroy()
             import Generate
 
         elif age.years < 18:
@@ -37,7 +63,7 @@ def validation():
             pass
     except ValueError:
         playsound("access_denied.mp3")
-        messagebox.showerror("Error", "Access Denied")
+        messagebox.showerror("Error", "Add ID Number")
 
 
 # Creating labels and entries for the user to input their name, email address,
@@ -69,9 +95,6 @@ address_ent.grid(row=3, column=2, padx=20, pady=20)
 # Adding a button for the user to submit their information
 submit_btn = tk.Button(window, text="SUBMIT", relief="raised", borderwidth=4, bg="yellow", width=25, height=1, command=validation)
 submit_btn.place(x=160, y=300)
-
-
-
 
 
 window.mainloop()

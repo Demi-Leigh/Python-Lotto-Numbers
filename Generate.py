@@ -3,6 +3,7 @@ from tkinter import *
 import tkinter as tk
 import random
 from tkinter import messagebox
+from playsound import playsound
 
 # Creating the window , adding a title and sizing it
 window = Tk()
@@ -20,7 +21,30 @@ def ran_numbers():
         mynumber = random.randint(1, 49)
         if mynumber not in mylist:
             mylist.append(mynumber)
-    lotto_num.config(text=mylist)
+            lotto_num.config(text=mylist)
+    mylist = set(mylist)
+    entry_numbers = {int(first_ent.get()), int(second_ent.get()), int(third_ent.get()), int(fourth_ent.get()),
+                     int(fifth_ent.get()), int(sixth_ent.get())}
+    matching_nums = mylist.intersection(entry_numbers)
+    count = len(matching_nums)
+    if count == 2:
+        playsound("cheer.mp3")
+        messagebox.showinfo("You Win!", "You have won R20")
+    elif count == 3:
+        playsound("cheer.mp3")
+        messagebox.showinfo("You Win!!", "You have won R100.50 ")
+    elif count == 4:
+        playsound("cheer.mp3")
+        messagebox.showinfo("You Win", "You Have won R2384")
+    elif count == 5:
+        playsound("cheer.mp3")
+        messagebox.showinfo("You Win", "You have won R8584")
+    elif count == 6:
+        playsound("jackpot.mp3")
+        messagebox.showinfo("JACKPOT", "You Win R10 000 000")
+    else:
+        playsound("laugh.mp3")
+        messagebox.showinfo("Unlucky!!", "You Lose")
 
 
 def claim():
@@ -75,7 +99,7 @@ play_btn.place(x=200, y=320)
 reset_btn = tk.Button(window, text="RESET", fg="white", bg="maroon",  relief="raised", borderwidth=4, command=reset)
 reset_btn.place(x=50, y=320)
 
-claim_btn = tk.Button(window, text="CLAIM", fg="white", bg="maroon",  relief="raised", borderwidth=4 , command=claim)
+claim_btn = tk.Button(window, text="CLAIM", fg="white", bg="maroon",  relief="raised", borderwidth=4, command=claim)
 claim_btn.place(x=350, y=320)
 
 exit_btn = tk.Button(window, text="EXIT", fg="white", bg="maroon",  relief="raised", borderwidth=4, command=exit_program)
