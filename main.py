@@ -15,9 +15,6 @@ window.geometry("600x400")
 window.config(bg="navy")
 window.resizable(0, 0)
 
-# Function to retrieve id number
-# Function to check users age
-
 
 def player_id():
     name = name_ent.get()
@@ -43,6 +40,8 @@ def player_id():
 
     file.write("Address: " + address)
 
+# Function to retrieve id number
+# Function to check users age
 
 
 def validation():

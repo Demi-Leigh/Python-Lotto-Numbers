@@ -3,6 +3,7 @@ from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
 import requests
+from playsound import playsound
 
 # Creating the window , adding a title and sizing it and adding a color
 window = Tk()
@@ -13,13 +14,14 @@ window.resizable(0, 0)
 
 # A function which will convert the users winnings to any currency
 def convert():
+    playsound("click.mp3")
     try:
         url = "https://v6.exchangerate-api.com/v6/89dcd9e8cc7777ded2575ce1/latest/" + from_ent.get()
         rates = requests.get(url).json()
-        conversion = int(amount_ent.get()) * rates["conversion_rates"][to_ent.get()]
+        conversion = float(amount_ent.get()) * rates["conversion_rates"][to_ent.get()]
         currency_amount.config(text=conversion)
     except:
-        messagebox.showerror("Error", "No internet connection, please check internet connection")
+        messagebox.showerror("Error", "Entries Cannot Be Empty")
 
 
 lbl_from = tk.Label(window, text="FROM: ", bg="teal")

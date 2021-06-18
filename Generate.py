@@ -16,43 +16,49 @@ window.resizable(0, 0)
 
 
 def ran_numbers():
-    mylist = []
-    while len(mylist) < 6:
-        mynumber = random.randint(1, 49)
-        if mynumber not in mylist:
-            mylist.append(mynumber)
-            lotto_num.config(text=mylist)
-    mylist = set(mylist)
-    entry_numbers = {int(first_ent.get()), int(second_ent.get()), int(third_ent.get()), int(fourth_ent.get()),
-                     int(fifth_ent.get()), int(sixth_ent.get())}
-    matching_nums = mylist.intersection(entry_numbers)
-    count = len(matching_nums)
-    if count == 2:
-        playsound("cheer.mp3")
-        messagebox.showinfo("You Win!", "You have won R20")
-    elif count == 3:
-        playsound("cheer.mp3")
-        messagebox.showinfo("You Win!!", "You have won R100.50 ")
-    elif count == 4:
-        playsound("cheer.mp3")
-        messagebox.showinfo("You Win", "You Have won R2384")
-    elif count == 5:
-        playsound("cheer.mp3")
-        messagebox.showinfo("You Win", "You have won R8584")
-    elif count == 6:
-        playsound("jackpot.mp3")
-        messagebox.showinfo("JACKPOT", "You Win R10 000 000")
-    else:
-        playsound("laugh.mp3")
-        messagebox.showinfo("Unlucky!!", "You Lose")
+    try:
+        mylist = []
+        while len(mylist) < 6:
+            mynumber = random.randint(1, 49)
+            if mynumber not in mylist:
+                mylist.append(mynumber)
+                lotto_num.config(text=mylist)
+        mylist = set(mylist)
+        entry_numbers = {int(first_ent.get()), int(second_ent.get()), int(third_ent.get()), int(fourth_ent.get()),
+                         int(fifth_ent.get()), int(sixth_ent.get())}
+        matching_nums = mylist.intersection(entry_numbers)
+        count = len(matching_nums)
+        if count == 2:
+            playsound("cheer.mp3")
+            messagebox.showinfo("You Win!", "You have won R20")
+        elif count == 3:
+            playsound("cheer.mp3")
+            messagebox.showinfo("You Win!!", "You have won R100.50 ")
+        elif count == 4:
+            playsound("cheer.mp3")
+            messagebox.showinfo("You Win", "You Have won R2384")
+        elif count == 5:
+            playsound("cheer.mp3")
+            messagebox.showinfo("You Win", "You have won R8584")
+        elif count == 6:
+            playsound("jackpot.mp3")
+            messagebox.showinfo("JACKPOT", "You Win R10 000 000")
+        else:
+            playsound("laugh.mp3")
+            messagebox.showinfo("Unlucky!!","You Lose")
+    except ValueError:
+        messagebox.showerror("Error", "Please Insert 6 Numbers!")
 
 
 def claim():
+    playsound("click.mp3")
+    messagebox.showinfo("NOTE", "Please Use UpperCase When Selecting Currencies!!")
     window.destroy()
     import Claim
 
 
 def reset():
+    playsound("click.mp3")
     first_ent.delete(0, END)
     second_ent.delete(0, END)
     third_ent.delete(0, END)
@@ -63,6 +69,7 @@ def reset():
 
 
 def exit_program():
+    playsound("click.mp3")
     messagebox.showinfo("GoodBye", "Thank You For Playing")
     window.destroy()
 

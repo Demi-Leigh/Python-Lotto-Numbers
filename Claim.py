@@ -6,7 +6,6 @@ import smtplib
 from tkinter import messagebox
 
 
-
 # Creating the window , adding a title and sizing it
 window = Tk()
 window.title("BANKING DETAILS")
@@ -20,16 +19,11 @@ def submit():
     sender_email_id = 'demijay2323@gmail.com'
     receiver_email_id = email_add.get()
     password = "1a2a3a4a5a6a7a8a"
-    # start TLS for security
     s.starttls()
-    #  Authentication
     s.login(sender_email_id, password)
-    # message to be sent
     message = "CONGRATULATIONS\n"
     message = message + "You Have Won" + "\n" + "These are your bank details " + "\n" + account_holder_ent.get() + "\n" + account_number_ent.get() + "\n" + bank_name_ent.get()
-    # sending the mail
     s.sendmail(sender_email_id, receiver_email_id, message)
-    # terminating the session
     s.quit()
     messagebox.showinfo("LOTTO", "Thanks for playing, please check your emails")
     window.destroy()
