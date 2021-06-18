@@ -11,6 +11,7 @@ window.title("CURRENCY CONVERTER")
 window.geometry("600x300")
 window.config(bg="teal")
 window.resizable(0, 0)
+window.wm_iconify()
 
 # A function which will convert the users winnings to any currency
 def convert():
@@ -20,8 +21,20 @@ def convert():
         rates = requests.get(url).json()
         conversion = float(amount_ent.get()) * rates["conversion_rates"][to_ent.get()]
         currency_amount.config(text=conversion)
+        amount = conversion
+
+        with open("players.txt", "a+") as file:
+            file.write("Amount: " + str(amount))
+
+            file.write("\n")
+
     except:
         messagebox.showerror("Error", "Entries Cannot Be Empty")
+
+
+def return_btn():
+    window.iconify()
+    import Claim
 
 
 lbl_from = tk.Label(window, text="FROM: ", bg="teal")
@@ -45,7 +58,11 @@ amount_ent.place(x=235, y=130)
 currency_amount = tk.Label(window, height=1, width=21, bg="teal")
 currency_amount.place(x=233, y=170)
 
-convert_btn = tk.Button(window, text="CONVERT", relief="raised", borderwidth=4, width=25, height=1, command=convert)
-convert_btn.place(x=200, y=210)
+return_btn = tk.Button(window, text="RETURN", relief="raised", borderwidth=4, width=10, height=1, command=return_btn)
+return_btn.place(x=120, y=210)
+
+
+convert_btn = tk.Button(window, text="CONVERT", relief="raised", borderwidth=4, width=10, height=1, command=convert)
+convert_btn.place(x=360, y=210)
 
 window.mainloop()

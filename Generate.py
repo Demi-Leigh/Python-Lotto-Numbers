@@ -5,6 +5,7 @@ import random
 from tkinter import messagebox
 from playsound import playsound
 
+
 # Creating the window , adding a title and sizing it
 window = Tk()
 window.title("LOTTO NUMBERS")
@@ -28,31 +29,53 @@ def ran_numbers():
                          int(fifth_ent.get()), int(sixth_ent.get())}
         matching_nums = mylist.intersection(entry_numbers)
         count = len(matching_nums)
+        file = open("players.txt", "a+")
+
         if count == 2:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win!", "You have won R20")
+
+            file.write("Cash: " + "R20")
+
+            file.write("\n")
         elif count == 3:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win!!", "You have won R100.50 ")
+
+            file.write("Cash: " + "R100.50")
+
+            file.write("\n")
         elif count == 4:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win", "You Have won R2384")
+
+            file.write("Cash: " + "R2384")
+
+            file.write("\n")
         elif count == 5:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win", "You have won R8584")
+
+            file.write("Cash: " + "R8584")
+
+            file.write("\n")
         elif count == 6:
             playsound("jackpot.mp3")
             messagebox.showinfo("JACKPOT", "You Win R10 000 000")
+
+            file.write("Cash: " + "R10 000 000")
+
+            file.write("\n")
         else:
             playsound("laugh.mp3")
-            messagebox.showinfo("Unlucky!!","You Lose")
+            messagebox.showinfo("Unlucky!!", "You Lose")
+
     except ValueError:
         messagebox.showerror("Error", "Please Insert 6 Numbers!")
 
 
 def claim():
     playsound("click.mp3")
-    messagebox.showinfo("NOTE", "Please Use UpperCase When Selecting Currencies!!")
     window.destroy()
     import Claim
 
