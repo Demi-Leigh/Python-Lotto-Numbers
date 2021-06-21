@@ -17,8 +17,12 @@ window.config(bg="navy")
 window.resizable(0, 0)
 
 
+img = PhotoImage(file="images.png")
+Label(window, bg="navy", image=img, width=500, heigh=300, ).place(x=100, y=50)
+
+
 def player_id():
-    player_name = random.sample((1,20),1)
+    player_name = random.sample((1, 20), 1)
     player_name = str(player_name)
 
     file = open("players.txt", "a+")
@@ -44,8 +48,6 @@ def player_id():
     file.write("Address: " + address_ent.get())
 
     file.write("\n")
-
-
 # Function to retrieve id number
 # Function to check users age
 

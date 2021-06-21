@@ -24,9 +24,7 @@ def convert():
         amount = conversion
 
         with open("players.txt", "a+") as file:
-            file.write("Amount: " + str(amount))
-
-            file.write("\n")
+            file.write("Converted Amount: " + str(amount))
 
     except:
         messagebox.showerror("Error", "Entries Cannot Be Empty")

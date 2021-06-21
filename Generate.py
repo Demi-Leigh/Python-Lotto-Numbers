@@ -37,39 +37,45 @@ def ran_numbers():
 
             file.write("Cash: " + "R20")
 
-            file.write("\n")
         elif count == 3:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win!!", "You have won R100.50 ")
+            file.write("\n")
 
             file.write("Cash: " + "R100.50")
 
-            file.write("\n")
         elif count == 4:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win", "You Have won R2384")
+            file.write("\n")
 
             file.write("Cash: " + "R2384")
 
-            file.write("\n")
         elif count == 5:
             playsound("cheer.mp3")
             messagebox.showinfo("You Win", "You have won R8584")
+            file.write("\n")
 
             file.write("Cash: " + "R8584")
 
-            file.write("\n")
         elif count == 6:
             playsound("jackpot.mp3")
             messagebox.showinfo("JACKPOT", "You Win R10 000 000")
+            file.write("\n")
 
             file.write("Cash: " + "R10 000 000")
 
-            file.write("\n")
         else:
             playsound("laugh.mp3")
-            messagebox.showinfo("Unlucky!!", "You Lose")
-
+            msg = messagebox.showinfo("Unlucky!!", "You Lose")
+            if msg == "ok":
+                first_ent.delete(0, END)
+                second_ent.delete(0, END)
+                third_ent.delete(0, END)
+                fourth_ent.delete(0, END)
+                fifth_ent.delete(0, END)
+                sixth_ent.delete(0, END)
+                lotto_num.config(text=" ")
     except ValueError:
         messagebox.showerror("Error", "Please Insert 6 Numbers!")
 
@@ -88,7 +94,6 @@ def reset():
     fourth_ent.delete(0, END)
     fifth_ent.delete(0, END)
     sixth_ent.delete(0, END)
-    lotto_num.config(text=" ")
 
 
 def exit_program():
