@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 import smtplib
 from tkinter import messagebox
+from playsound import playsound
 
 
 # Creating the window , adding a title and sizing it
@@ -15,6 +16,7 @@ window.resizable(0, 0)
 window.wm_iconify()
 
 
+# Sends an email to user telling them they've won and confirming bank details
 def submit():
     s = smtplib.SMTP('smtp.gmail.com', 587)
     sender_email_id = 'demijay2323@gmail.com'
@@ -29,13 +31,18 @@ def submit():
     messagebox.showinfo("LOTTO", "Thanks for playing, please check your emails")
     window.destroy()
 
+# Tells user to use uppercase when converting currency
+
 
 def function():
+    playsound("click.mp3")
     messagebox.showinfo("NOTE", "Please Use UpperCase When Selecting Currencies!!")
     window.iconify()
     import Convert
 
 
+# Labels and Entries for bank details to be entered
+# Buttons to take user to conversion window and submit button to receive email
 lbl_account_holder = tk.Label(window, text="ACCOUNT HOLDER NAME: ", fg="white", bg="grey")
 lbl_account_holder.grid(row=0, column=1, padx=20, pady=20)
 
@@ -70,4 +77,3 @@ submit_btn.grid(row=4, column=2, padx=20, pady=20)
 
 
 window.mainloop()
-

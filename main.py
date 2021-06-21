@@ -16,9 +16,7 @@ window.geometry("600x400")
 window.config(bg="navy")
 window.resizable(0, 0)
 
-
-img = PhotoImage(file="images.png")
-Label(window, bg="navy", image=img, width=500, heigh=300, ).place(x=100, y=50)
+# Writing users details to file
 
 
 def player_id():
@@ -26,8 +24,6 @@ def player_id():
     player_name = str(player_name)
 
     file = open("players.txt", "a+")
-
-    file.write("\n")
 
     file.write("Name: " + name_ent.get())
 

@@ -14,6 +14,8 @@ window.resizable(0, 0)
 window.wm_iconify()
 
 # A function which will convert the users winnings to any currency
+
+
 def convert():
     playsound("click.mp3")
     try:
@@ -24,15 +26,22 @@ def convert():
         amount = conversion
 
         with open("players.txt", "a+") as file:
+            file.write("\n")
+
             file.write("Converted Amount: " + str(amount))
 
     except:
         messagebox.showerror("Error", "Entries Cannot Be Empty")
 
 
+# Takes user back to bank details window
 def return_btn():
+    playsound("click.mp3")
     window.iconify()
     import Claim
+
+# Labels and Entries for user to input the currencies and amount of money
+# Buttons to convert and return to previous window
 
 
 lbl_from = tk.Label(window, text="FROM: ", bg="teal")

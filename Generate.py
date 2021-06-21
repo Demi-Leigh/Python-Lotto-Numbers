@@ -17,6 +17,7 @@ window.resizable(0, 0)
 
 
 def ran_numbers():
+    playsound("click.mp3")
     try:
         mylist = []
         while len(mylist) < 6:
@@ -30,6 +31,7 @@ def ran_numbers():
         matching_nums = mylist.intersection(entry_numbers)
         count = len(matching_nums)
         file = open("players.txt", "a+")
+# Checking if numbers match and how much user gets based on numbers matched
 
         if count == 2:
             playsound("cheer.mp3")
@@ -79,11 +81,15 @@ def ran_numbers():
     except ValueError:
         messagebox.showerror("Error", "Please Insert 6 Numbers!")
 
+# Function that takes user to the next window to fill in bank details
+
 
 def claim():
     playsound("click.mp3")
     window.destroy()
     import Claim
+
+# Resets the entries that user entered
 
 
 def reset():
@@ -95,6 +101,8 @@ def reset():
     fifth_ent.delete(0, END)
     sixth_ent.delete(0, END)
 
+# Exits the program
+
 
 def exit_program():
     playsound("click.mp3")
@@ -103,6 +111,7 @@ def exit_program():
 
 
 # A label telling the user to input 6 numbers
+# Entries to input the 6 numbers
 
 lbl_numbers = tk.Label(window, text="PLEASE INSERT 6 NUMBERS AND THEN CLICK PLAY: ", bg="yellow")
 lbl_numbers.place(x=180, y=50)
